@@ -12,8 +12,8 @@ RUN rm /usr/i686-w64-mingw32/lib/libz.dll.a
 RUN rm /usr/x86_64-w64-mingw32/lib/libz.dll.a
 
 # Setup SDL2
-RUN wget -q https://www.libsdl.org/release/SDL2-devel-2.30.3-mingw.tar.gz -OSDL2-devel-2.30.3-mingw.tar.gz \
-    && tar -xzf SDL2-devel-2.30.3-mingw.tar.gz \
+RUN wget -q https://www.libsdl.org/release/SDL2-devel-2.30.10-mingw.tar.gz -OSDL2-devel-2.30.10-mingw.tar.gz \
+    && tar -xzf SDL2-devel-2.30.10-mingw.tar.gz \
     && cp -r SDL2*/i686-w64-mingw32/* /usr/i686-w64-mingw32 \
     && cp -r SDL2*/x86_64-w64-mingw32/* /usr/x86_64-w64-mingw32
 
@@ -38,4 +38,4 @@ RUN find "/usr/x86_64-w64-mingw32/lib/pkgconfig/" -name '*.pc' -exec sed -i "s|^
 RUN find "/usr/i686-w64-mingw32" -name '*.cmake' -exec sed -i "s|/opt/local/i686-w64-mingw32|/usr/i686-w64-mingw32|" '{}' \;
 RUN find "/usr/x86_64-w64-mingw32" -name '*.cmake' -exec sed -i "s|/opt/local//x86_64-w64-mingw32|/usr/x86_64-w64-mingw32|" '{}' \;
 
-RUN rm -rf /builddevx && mkdir /builddevx
+RUN rm -rf /builddevx/*

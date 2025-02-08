@@ -4,7 +4,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y ca-certificates cmake dpkg-dev g++-mingw-w64-i686 g++-mingw-w64-x86-64 git libz-mingw-w64-dev pkg-config-mingw-w64-i686 pkg-config-mingw-w64-x86-64 smpq tzdata wget
+    && apt-get install -y ca-certificates cmake dpkg-dev gettext g++-mingw-w64-i686 g++-mingw-w64-x86-64 git libz-mingw-w64-dev pkg-config-mingw-w64-i686 pkg-config-mingw-w64-x86-64 smpq tzdata wget
 WORKDIR /builddevx
 
 # Fix libz.dll
@@ -12,8 +12,8 @@ RUN rm /usr/i686-w64-mingw32/lib/libz.dll.a
 RUN rm /usr/x86_64-w64-mingw32/lib/libz.dll.a
 
 # Setup SDL2
-RUN wget -q https://www.libsdl.org/release/SDL2-devel-2.30.10-mingw.tar.gz -OSDL2-devel-2.30.10-mingw.tar.gz \
-    && tar -xzf SDL2-devel-2.30.10-mingw.tar.gz \
+RUN wget -q https://www.libsdl.org/release/SDL2-devel-2.32.0-mingw.tar.gz -OSDL2-devel-2.32.0-mingw.tar.gz \
+    && tar -xzf SDL2-devel-2.32.0-mingw.tar.gz \
     && cp -r SDL2*/i686-w64-mingw32/* /usr/i686-w64-mingw32 \
     && cp -r SDL2*/x86_64-w64-mingw32/* /usr/x86_64-w64-mingw32
 

@@ -39,3 +39,5 @@ RUN find "/usr/i686-w64-mingw32" -name '*.cmake' -exec sed -i "s|/opt/local/i686
 RUN find "/usr/x86_64-w64-mingw32" -name '*.cmake' -exec sed -i "s|/opt/local//x86_64-w64-mingw32|/usr/x86_64-w64-mingw32|" '{}' \;
 
 RUN rm -rf /builddevx/*
+
+RUN git config --global --add safe.directory '*'

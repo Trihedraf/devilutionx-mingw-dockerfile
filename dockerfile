@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN DEBIAN_FRONTEND=noninteractive \
@@ -12,8 +12,8 @@ RUN rm /usr/i686-w64-mingw32/lib/libz.dll.a
 RUN rm /usr/x86_64-w64-mingw32/lib/libz.dll.a
 
 # Setup SDL2
-RUN wget -q https://www.libsdl.org/release/SDL2-devel-2.32.0-mingw.tar.gz -OSDL2-devel-2.32.0-mingw.tar.gz \
-    && tar -xzf SDL2-devel-2.32.0-mingw.tar.gz \
+RUN wget -q https://github.com/libsdl-org/SDL/releases/download/release-2.32.6/SDL2-devel-2.32.6-mingw.tar.gz -OSDL2-devel-mingw.tar.gz \
+    && tar -xzf SDL2-devel-mingw.tar.gz \
     && cp -r SDL2*/i686-w64-mingw32/* /usr/i686-w64-mingw32 \
     && cp -r SDL2*/x86_64-w64-mingw32/* /usr/x86_64-w64-mingw32
 
